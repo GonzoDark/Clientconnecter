@@ -21,9 +21,16 @@ namespace Server
             IPAddress ip = IPAddress.Parse("127.0.0.1");
             TcpListener listener = new TcpListener(ip, port);
             listener.Start();
+
+            while (true)
+            {
+                newSocket = listener.AcceptSocket();
+                listClients.Add(new ClientData(newSocket));
+            }
+
         }
 
-
+        
 
     }
 }

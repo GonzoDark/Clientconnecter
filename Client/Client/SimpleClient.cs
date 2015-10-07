@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Client
@@ -19,6 +20,19 @@ namespace Client
             newClient = new TcpClient(IP, Port);
             newNetworkStream = newClient.GetStream();
             formatter = new BinaryFormatter();
+            new Thread();
         }
+
+        public void Listener()
+        {
+            formatter.Deserialize();
+        }
+
+        public void reader()
+        {
+            formatter.Serialize();
+        }
+
+       
     }
 }
