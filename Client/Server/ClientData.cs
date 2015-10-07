@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Server
 {
-    class Program
+    class ClientData
     {
-        static void Main(string[] args)
-        {
-        }
+
     }
 }
