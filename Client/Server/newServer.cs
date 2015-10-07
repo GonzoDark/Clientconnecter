@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net;
+using System.Threading;
 
 namespace Server
 {
@@ -19,15 +20,19 @@ namespace Server
         {
             int port = 5000;
             IPAddress ip = IPAddress.Parse("127.0.0.1");
-            TcpListener listener = new TcpListener(ip, port);
-            listener.Start();
+            newListener = new TcpListener(ip, port);
+            newListener.Start();
+            new Thread(Listener).Start();
 
+        }
+
+        public void Listener()
+        {
             while (true)
             {
-                newSocket = listener.AcceptSocket();
+                newSocket = newListener.AcceptSocket();
                 listClients.Add(new ClientData(newSocket));
             }
-
         }
 
         
